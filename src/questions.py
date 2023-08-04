@@ -1,4 +1,8 @@
-# array of quiz questions
+# Import model
+from app import db, Question, app
+
+
+# Array of quiz questions
 questions = [
     # 1. shedding
     {
@@ -89,3 +93,22 @@ questions = [
         },
     },
 ]
+
+with app.app_context():
+
+    # Insert each question
+    for question_obj in questions:
+
+        new_question = Question(
+            question_text=question_obj["question"],
+            answer_1=question_obj["options"]["a"],
+            answer_2=question_obj["options"]["b"],
+            answer_3=question_obj["options"]["c"],
+            answer_4=question_obj["options"]["d"],
+            answer_5=question_obj["options"]["e"],
+        )
+
+        db.session.add(new_question)
+
+    # Commit queries
+    db.session.commit()
