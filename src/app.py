@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, jsonify, request, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 import os
 import random
+
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -23,7 +24,10 @@ class Question(db.Model):
     __tablename__ = "questions"
 
     id = db.Column(db.Integer, primary_key=True)
+
     question_text = db.Column(db.String(), nullable=False)
+
+    param = db.Column(db.String(), nullable=False)
 
     answer_1 = db.Column(db.String(), nullable=False)
     answer_2 = db.Column(db.String(), nullable=False)
@@ -59,24 +63,19 @@ def about():
     return render_template("about.html")
 
 
-# @app.route("/breed")
-# def breed():
-#     return render_template("breed.html")
+# Quiz
+@app.route("/quiz")
+def quiz():
+    questions = enumerate(Question.query.all())
+    return render_template("quiz.html", questions=questions)
 
 
 # Quiz results
-@app.route("/results/")
+@app.route("/results")
 def results():
-    # mimics database results from quiz
-    breeds = [
-        "First breed",
-        "Second breed",
-        "Third breed",
-        "Fourth breed",
-        "Fifth breed",
-    ]
-
-    return render_template("results.html", breeds=breeds)
+    quiz_results = request.args
+    # TODO: import matched_breeds method and output results
+    return render_template("results.html")
 
 
 if __name__ == "__main__":
