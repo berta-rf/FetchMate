@@ -24,7 +24,7 @@ which describes better for size?
 """
 
 
-def matched_breeds(quiz_input: dict):
+def get_matched_breeds(quiz_input: dict):
     """
     Takes dog quiz input from users and returns a list of breeds
     """
