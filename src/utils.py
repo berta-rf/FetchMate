@@ -12,9 +12,16 @@ quiz_inputs = {
     "shedding": 3,
     "barking": 1,
     "energy": 3,
-    "good_with_strangers": 3,
+    "protectiveness": 3,
     "trainability": 5,
+    "min_life_expectancy": 6,  # 6 is the shortest minimum lifespan
 }
+
+"""
+which describes better for size?
+    "max_height_male":
+    "max_weight_male":
+"""
 
 
 def matched_breeds(quiz_input: dict):
@@ -55,7 +62,7 @@ def matched_breeds(quiz_input: dict):
                 breed = dict(breed)
                 possible_candidates.append(breed["name"])
 
-    # Find the most comptible breed
+    # Find the most compatible breed
     most_compatible_breed = Counter(possible_candidates).most_common(1)[0][0]
     return [most_compatible_breed]
 
