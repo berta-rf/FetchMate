@@ -1,34 +1,28 @@
 import requests
 import json
 from collections import Counter
+from config import API_KEY
 
-
-# To hide api key?
-API_KEY = "ksc1s4R35m4sMTnY5VmHhQ==aAfj6NgzuUGtlmIn"
 API_URL = "https://api.api-ninjas.com/v1/dogs?"
 
-# Quiz inputs example
-quiz_inputs = {
-    "shedding": 3,
-    "barking": 1,
-    "energy": 3,
-    "protectiveness": 3,
-    "trainability": 5,
-    "min_life_expectancy": 6,  # 6 is the shortest minimum lifespan
-}
 
-"""
-which describes better for size?
-    "max_height_male":
-    "max_weight_male":
-"""
-
-
-def get_matched_breeds(quiz_input: dict):
+def get_matched_breeds(quiz_input: dict, n=3):
     """
-    Takes dog quiz input from users and returns a list of breeds
+    Takes dog quiz input from users and number of matched breeds
+    Returns a list of specified number of breeds
+
+    # Quiz inputs example
+    quiz_inputs = {
+        "shedding": 3,
+        "barking": 1,
+        "energy": 3,
+        "protectiveness": 3,
+        "trainability": 5,
+        "min_life_expectancy": 6,  # 6 is the shortest minimum lifespan,
+        "max_weight_male":
+    }
     """
-    matched_candidates = []
+    matched_breeds = []
 
     # Pass all quiz options to API request
     response = requests.get(
@@ -41,17 +35,17 @@ def get_matched_breeds(quiz_input: dict):
         # Loop over results from API response and store only the name of breed in a list
         for breed in response.json():
             breed = dict(breed)
-            matched_candidates.append(breed["name"])
+            matched_breeds.append(breed["name"])
 
     # Return matched breeds if there is one perfect match or above
-    if matched_candidates:
-        return matched_candidates
+    if matched_breeds:
+        return matched_breeds
 
     # Otherwise find a most compatible breed
-    possible_candidates = []
+    candidates = []
 
     # Pass each quiz option at a time to API request and store matched breeds in a list
-    for option, score in quiz_inputs.items():
+    for option, score in quiz_input.items():
         response = requests.get(
             API_URL,
             headers={"X-Api-Key": API_KEY},
@@ -60,11 +54,12 @@ def get_matched_breeds(quiz_input: dict):
         if response.status_code == requests.codes.ok:
             for breed in response.json():
                 breed = dict(breed)
-                possible_candidates.append(breed["name"])
+                candidates.append(breed["name"])
 
-    # Find the most compatible breed
-    most_compatible_breed = Counter(possible_candidates).most_common(1)[0][0]
-    return [most_compatible_breed]
+    # Find the compatible breeds
+    candidates_count = Counter(candidates).most_common(n)
+    compatible_breeds = [breed for breed, count in candidates_count]
+    return compatible_breeds
 
 
 def get_dog_image(breed: str):
