@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
+from utils import get_matched_breeds
 import os
 import random
 
@@ -20,7 +21,6 @@ db = SQLAlchemy(app)
 
 # Question class (questions table)
 class Question(db.Model):
-
     __tablename__ = "questions"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -51,6 +51,7 @@ class Question(db.Model):
 images = os.listdir("static/img")
 image = random.choice(images)
 
+
 # Home
 @app.route("/")
 def home():
@@ -74,8 +75,8 @@ def quiz():
 @app.route("/results")
 def results():
     quiz_results = request.args
-    # TODO: import matched_breeds method and output results
-    return render_template("results.html")
+    matched_breeds = get_matched_breeds(dict(quiz_results))
+    return render_template("results.html", breeds=matched_breeds)
 
 
 if __name__ == "__main__":
