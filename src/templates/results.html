@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Quiz Results {% endblock %}</h1>
+    <div style="width: 50%; margin: auto" >
+        {% for breed in breeds %}
+        <ol style="padding: 1rem; background-color:rgb(248, 239, 227); margin-bottom: 1rem; list-style: none;">
+            <li style="font-size: 1rem">
+                #{{ loop.index }}
+                {{ breed }}
+            </li>
+        </ol>
+        {% endfor %}
+    </div>
+{% endblock %}
