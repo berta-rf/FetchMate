@@ -6,10 +6,10 @@ from config import API_KEY
 API_URL = "https://api.api-ninjas.com/v1/dogs?"
 
 
-def get_matched_breeds(quiz_input: dict, n=3):
+def get_matched_breeds(quiz_input: dict, n=1):
     """
-    Takes dog quiz input from users and number of matched breeds (default is 3)
-    Returns a list of specified number of breeds
+    Takes dog quiz input from users and number of matched breeds (default is 1)
+    Returns a dict of specified number of breeds and its image url
 
     # Quiz input example
     quiz_input = {
@@ -20,7 +20,7 @@ def get_matched_breeds(quiz_input: dict, n=3):
         "trainability": 5,
     }
     """
-    matched_breeds = []
+    matched_breeds = dict()
 
     # Pass all quiz options to API request
     response = requests.get(
@@ -33,7 +33,7 @@ def get_matched_breeds(quiz_input: dict, n=3):
         # Loop over results from API response and store only the name of breed in a list
         for breed in response.json():
             breed = dict(breed)
-            matched_breeds.append(breed["name"])
+            matched_breeds[breed["name"]] = breed["image_link"]
 
     # Return matched breeds if there is one perfect match or above
     if matched_breeds:
