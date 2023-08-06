@@ -6,23 +6,21 @@ from config import API_KEY
 API_URL = "https://api.api-ninjas.com/v1/dogs?"
 
 
-def get_matched_breeds(quiz_input: dict, n=3):
+def get_matched_breeds(quiz_input: dict, n=1):
     """
-    Takes dog quiz input from users and number of matched breeds
-    Returns a list of specified number of breeds
+    Takes dog quiz input from users and number of matched breeds (default is 1)
+    Returns a dict of specified number of breeds and its image url
 
-    # Quiz inputs example
-    quiz_inputs = {
+    # Quiz input example
+    quiz_input = {
         "shedding": 3,
         "barking": 1,
         "energy": 3,
         "protectiveness": 3,
         "trainability": 5,
-        "min_life_expectancy": 6,  # 6 is the shortest minimum lifespan,
-        "max_weight_male":
     }
     """
-    matched_breeds = []
+    matched_breeds = dict()
 
     # Pass all quiz options to API request
     response = requests.get(
@@ -35,13 +33,13 @@ def get_matched_breeds(quiz_input: dict, n=3):
         # Loop over results from API response and store only the name of breed in a list
         for breed in response.json():
             breed = dict(breed)
-            matched_breeds.append(breed["name"])
+            matched_breeds[breed["name"]] = breed["image_link"]
 
     # Return matched breeds if there is one perfect match or above
     if matched_breeds:
-        return matched_breeds
+        return matched_breeds[:n]
 
-    # Otherwise find a most compatible breed
+    # Otherwise find the compatible breeds
     candidates = []
 
     # Pass each quiz option at a time to API request and store matched breeds in a list
@@ -64,7 +62,7 @@ def get_matched_breeds(quiz_input: dict, n=3):
 
 def get_dog_image(breed: str):
     """
-    Takes a name of breed and returns its image link
+    Takes a name of breed and returns its image url
     """
     response = requests.get(
         API_URL,
