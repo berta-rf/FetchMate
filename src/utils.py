@@ -20,7 +20,7 @@ def get_matched_breeds(quiz_input: dict, n=1):
         "trainability": 5,
     }
     """
-    matched_breeds = dict()
+    matched_breeds = []
 
     # Pass all quiz options to API request
     response = requests.get(
@@ -33,7 +33,7 @@ def get_matched_breeds(quiz_input: dict, n=1):
         # Loop over results from API response and store only the name of breed in a list
         for breed in response.json():
             breed = dict(breed)
-            matched_breeds[breed["name"]] = breed["image_link"]
+            matched_breeds.append(breed["name"])
 
     # Return matched breeds if there is one perfect match or above
     if matched_breeds:

@@ -82,6 +82,8 @@ def results():
     matched_breeds = get_matched_breeds(dict(quiz_results))
     image_url = get_dog_image(matched_breeds[0])
     image_name = f"static/img/{matched_breeds[0]}.jpg"
+
+    # Retrieve image from url to static/img
     urllib.request.urlretrieve(image_url, image_name)
     img = Image.open(image_name)
     data = io.BytesIO()
