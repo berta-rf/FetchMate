@@ -5,7 +5,7 @@
     <main class="container quiz">
       <form action="/results">
         {% for idx, question in questions %}
-        <div id="question-{{ idx }}" class="card" style="width: 18rem; display: none;">
+        <div id="question-{{ idx }}" class="card bg-light mb-3" style="width: 50rem; display: none;">
             <div class="card-header">
               <h3>{{ question.question_text }}</h3>
             </div>
@@ -34,7 +34,7 @@
           </div>
         {% endfor %}
 
-        <button class="btn btn-lg" id="next-btn">Next</button>
+        <button class="btn btn-light btn-lg" id="next-btn">Next</button>
       </form>
     </main>
 
