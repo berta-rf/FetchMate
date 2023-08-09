@@ -1,12 +1,8 @@
 from flask import Flask, render_template, jsonify, request, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
-from utils import get_matched_breeds, get_dog_image
-from PIL import Image
+from utils import get_matched_breeds
 import os
 import random
-import urllib.request
-import base64
-import io
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -80,20 +76,7 @@ def quiz():
 def results():
     quiz_results = request.args
     matched_breeds = get_matched_breeds(dict(quiz_results))
-    image_url = get_dog_image(matched_breeds[0])
-    image_name = f"static/img/{matched_breeds[0]}.jpg"
-
-    # Retrieve image from url to static/img
-    urllib.request.urlretrieve(image_url, image_name)
-    img = Image.open(image_name)
-    data = io.BytesIO()
-    img.save(data, "JPEG")
-    encoded_img_data = base64.b64encode(data.getvalue())
-    return render_template(
-        "results.html",
-        breeds=matched_breeds,
-        image_data=encoded_img_data.decode("utf-8"),
-    )
+    return render_template("results.html", breeds=matched_breeds)
 
 
 if __name__ == "__main__":
