@@ -64,11 +64,15 @@ def get_matched_breeds(quiz_input: dict, n=2):
 
     # Find the compatible breeds
     candidates_count = Counter(candidates).most_common(n)
-    compatible_breeds = dict()
-    for breed, count in candidates_count:
-        download_dog_image(breed)
-        compatible_breeds[breed] = f"static/img/{breed}.jpg"
-    return compatible_breeds
+    if candidates_count:
+        compatible_breeds = dict()
+        for breed, count in candidates_count:
+            download_dog_image(breed)
+            compatible_breeds[breed] = f"static/img/{breed}.jpg"
+        return compatible_breeds
+
+    # Return a cat-person message and a cat image if no breeds matched
+    return {"You're a Cat Person🐱": "static/img/cat-white-wall.jpg"}
 
 
 def download_dog_image(breed: str):
