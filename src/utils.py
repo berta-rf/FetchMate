@@ -1,14 +1,19 @@
 import requests
 import json
+import urllib.request
+import io
+import os
 from collections import Counter
 from config import API_KEY
+from PIL import Image
+
 
 API_URL = "https://api.api-ninjas.com/v1/dogs?"
 
 
-def get_matched_breeds(quiz_input: dict, n=1):
+def get_matched_breeds(quiz_input: dict, n=2):
     """
-    Takes dog quiz input from users and number of matched breeds (default is 1)
+    Takes dog quiz input from users and number of matched breeds
     Returns a dict of specified number of breeds and its image url
 
     # Quiz input example
@@ -20,7 +25,7 @@ def get_matched_breeds(quiz_input: dict, n=1):
         "trainability": 5,
     }
     """
-    matched_breeds = []
+    matched_breeds = dict()
 
     # Pass all quiz options to API request
     response = requests.get(
@@ -31,13 +36,15 @@ def get_matched_breeds(quiz_input: dict, n=1):
 
     if response.status_code == requests.codes.ok:
         # Loop over results from API response and store only the name of breed in a list
-        for breed in response.json():
+        for breed in response.json()[:n]:
             breed = dict(breed)
-            matched_breeds.append(breed["name"])
+            breed_name = breed["name"]
+            download_dog_image(breed_name)
+            matched_breeds[breed_name] = f"static/img/{breed_name}.jpg"
 
     # Return matched breeds if there is one perfect match or above
     if matched_breeds:
-        return matched_breeds[:n]
+        return matched_breeds
 
     # Otherwise find the compatible breeds
     candidates = []
@@ -52,22 +59,36 @@ def get_matched_breeds(quiz_input: dict, n=1):
         if response.status_code == requests.codes.ok:
             for breed in response.json():
                 breed = dict(breed)
-                candidates.append(breed["name"])
+                breed_name = breed["name"]
+                candidates.append(breed_name)
 
     # Find the compatible breeds
     candidates_count = Counter(candidates).most_common(n)
-    compatible_breeds = [breed for breed, count in candidates_count]
+    compatible_breeds = dict()
+    for breed, count in candidates_count:
+        download_dog_image(breed)
+        compatible_breeds[breed] = f"static/img/{breed}.jpg"
     return compatible_breeds
 
 
-def get_dog_image(breed: str):
+def download_dog_image(breed: str):
     """
-    Takes a name of breed and returns its image url
+    Takes a name of breed and saves its image to static/img
     """
-    response = requests.get(
-        API_URL,
-        headers={"X-Api-Key": API_KEY},
-        params={"name": breed},
-    )
-    if response.status_code == requests.codes.ok:
-        return dict(response.json()[0])["image_link"]
+    image_path = f"static/img/{breed}.jpg"
+
+    # Checks if the image has been downloaded before
+    if not os.path.isfile(image_path):
+        response = requests.get(
+            API_URL,
+            headers={"X-Api-Key": API_KEY},
+            params={"name": breed},
+        )
+        if response.status_code == requests.codes.ok:
+            image_url = dict(response.json()[0])["image_link"]
+
+            # Retrieve image from url to static/img
+            urllib.request.urlretrieve(image_url, image_path)
+            img = Image.open(image_path)
+            data = io.BytesIO()
+            img.save(data, "JPEG")

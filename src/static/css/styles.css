@@ -99,11 +99,10 @@ h1, h2, h3, h4, p {
 }
 
 #discover {
-    font-weight: bold;
+    font-family: 'Hagrid Text Trial', sans-serif;
     margin-top: 0 !important;
     font-size: 3.6rem;
     color: var(--bg-white);
-    text-shadow: 3px 3px 20px var(--secondary), -2px 1px 30px var(--muted);
 }
 
 #subtitle {
@@ -134,6 +133,7 @@ h1, h2, h3, h4, p {
     border: none;
     color: var(--bg-white);
     font-size: 2rem;
+    font-family: 'Hagrid Trial', sans-serif;
 }
 
 #hero_button:hover {
@@ -170,4 +170,10 @@ p {
 #quiz-result {
     text-align: center;
     padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+#breed-picture {
+    height: 200px;
+    width: 200px;
 }
