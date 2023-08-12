@@ -3,7 +3,7 @@
 {% block content %}
     <!-- <h1>{% block title %} Quiz {% endblock %}</h1> -->
     <main class="container quiz">
-      <form action="/results">
+      <form action="/results" id="quiz_form">
         {% for idx, question in questions %}
         <div id="question-{{ idx }}" class="card bg-light mb-3" style="width: 50rem; display: none;">
             <div class="card-header">
@@ -11,23 +11,23 @@
             </div>
             <ul class="list-group list-group-flush answers">
               <li class="list-group-item">
-                <input id="answer_{{ idx }}_1" type="radio" name="{{ question.param }}" value="{{ question.value_1 }}">
+                <input id="answer_{{ idx }}_1" type="radio" required name="{{ question.param }}" value="{{ question.value_1 }}">
                 <label for="answer_{{ idx }}_1">{{ question.answer_1 }}</label>
               </li>
               <li class="list-group-item">
-                <input id="answer_{{ idx }}_2" type="radio" name="{{ question.param }}" value="{{ question.value_2 }}">
+                <input id="answer_{{ idx }}_2" type="radio" required name="{{ question.param }}" value="{{ question.value_2 }}">
                 <label for="answer_{{ idx }}_2">{{ question.answer_2 }}</label>
               </li>
               <li class="list-group-item">
-                <input id="answer_{{ idx }}_3" type="radio" name="{{ question.param }}" value="{{ question.value_3 }}">
+                <input id="answer_{{ idx }}_3" type="radio" required name="{{ question.param }}" value="{{ question.value_3 }}">
                 <label for="answer_{{ idx }}_3">{{ question.answer_3 }}</label>
               </li>
               <li class="list-group-item">
-                <input id="answer_{{ idx }}_4" type="radio" name="{{ question.param }}" value="{{ question.value_4 }}">
+                <input id="answer_{{ idx }}_4" type="radio" required name="{{ question.param }}" value="{{ question.value_4 }}">
                 <label for="answer_{{ idx }}_4">{{ question.answer_4 }}</label>
               </li>
               <li class="list-group-item">
-                <input id="answer_{{ idx }}_5" type="radio" name="{{ question.param }}" value="{{ question.value_5 }}">
+                <input id="answer_{{ idx }}_5" type="radio" required name="{{ question.param }}" value="{{ question.value_5 }}">
                 <label for="answer_{{ idx }}_5">{{ question.answer_5 }}</label>
               </li>
             </ul>
@@ -50,6 +50,23 @@ function loadNextQuestion(event) {
 
   event.preventDefault()
 
+  // If there is no next question submit the form
+  const nextQuestionEl = document.getElementById('question-' + (currentQuestionIndex + 1));
+  if (!nextQuestionEl) {
+    document.getElementById("quiz_form").submit();
+    return;
+  }
+
+  const questionEl = document.getElementById("question-" + currentQuestionIndex);
+
+  // Check if an answer was selected
+  const checkedAnswers = questionEl.querySelectorAll('input[type=radio]:checked');
+
+  if (checkedAnswers.length == 0) {
+    alert("Please select an answer!")
+    return;
+  }
+
   // Hide previous question
   const previousQuestion = document.getElementById('question-' + currentQuestionIndex);
   previousQuestion.style.display = 'none';
@@ -62,7 +79,6 @@ function loadNextQuestion(event) {
 }
 
 function displayQuestion(index) {
-
   // Display question
   const questionEl = document.getElementById('question-' + index);
 
