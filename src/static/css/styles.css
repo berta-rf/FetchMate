@@ -178,3 +178,7 @@ p {
     height: 200px;
     width: 200px;
 }
+
+#social-share {
+    padding-right: 50px;
+}

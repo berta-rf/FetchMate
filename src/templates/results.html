@@ -2,6 +2,10 @@
 
 {% block content %}
     <h1 id="quiz-result">{% block title %} The Best Dog Breed for You is {% endblock %}</h1>
+    <div id="social-share">
+        {{ share.load() }}
+        {{ share.create(title='Share with: ', sites='twitter, facebook, google', align='right') }}
+    </div>
     <div style="width: 50%; margin: auto" >
         {% for breed, image_url in breeds.items() %}
         <ol class="list-group list-group-flush" style="background-color:rgb(248, 239, 227); margin-bottom: 1rem; list-style: none;">

@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
+from flask_share import Share
 from utils import get_matched_breeds
 import os
 import random
@@ -18,6 +19,9 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 
+# Create social share component
+share = Share()
+share.init_app(app)
 
 # Question class (questions table)
 class Question(db.Model):
