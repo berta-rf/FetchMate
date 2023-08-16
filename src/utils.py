@@ -1,7 +1,6 @@
 import requests
 import shutil
 import json
-import urllib.request
 import io
 import os
 from collections import Counter
