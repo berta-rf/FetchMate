@@ -48,13 +48,18 @@ body {
     color: var(--bg-white) !important;
     text-decoration: none;
     background-color: inherit;
-    padding: 2% !important;
+    padding-left: 30px !important;
+    padding-right: 40px !important;
 }
 
 .nav-link:hover {
     color: var(--muted) !important;
 }
 
+#logo {
+    width: 20%;
+    height: auto;
+}
 
 /* HOME */
 
