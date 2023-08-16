@@ -1,4 +1,5 @@
 import requests
+import shutil
 import json
 import urllib.request
 import io
@@ -92,7 +93,12 @@ def download_dog_image(breed: str):
             image_url = dict(response.json()[0])["image_link"]
 
             # Retrieve image from url to static/img
-            urllib.request.urlretrieve(image_url, image_path)
+            r = requests.get(image_url, stream=True)
+            if r.status_code == 200:
+                with open(image_path, "wb") as f:
+                    r.raw.decode_content = True
+                    shutil.copyfileobj(r.raw, f)
+
             img = Image.open(image_path)
             data = io.BytesIO()
             img.save(data, "JPEG")
