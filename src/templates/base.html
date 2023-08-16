@@ -14,7 +14,9 @@
 
 <body >
     <nav class="navbar">
-        <a class="nav-link fw-bold brandlink" href="{{ url_for('home') }}">FetchMate LOGO HERE</a>
+        <a class="nav-link fw-bold brandlink" href="{{ url_for('home') }}">
+            <img class="nav-link" id="logo" src="{{ url_for('static', filename='img/thick_logo.png') }}" alt="">
+        </a>
         <a class="nav-link fw-bold aboutlink" href="{{ url_for('about') }}">About</a>
     </nav>
 
