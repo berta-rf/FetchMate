@@ -3,7 +3,7 @@
 {% block content %}
     <div id="social-share" class="mt-5">
         {{ share.load() }}
-        {{ share.create(title='Share with: ', sites='twitter, facebook, google', align='right') }}
+        {{ share.create(title='Share with: ', sites='twitter, facebook', align='right') }}
     </div>
 
     <h1 id="quiz-result">{% block title %} The Best Dog Breed for You is {% endblock %}</h1>
@@ -11,11 +11,11 @@
     <div style="width: 60%; margin: auto" >
         {% for breed, image_url in breeds.items() %}
         <div class="card my-5 text-center result-card" >
-            <img src="{{ image_url }}" class="card-img-top breed_picture">
+            <img src="{{ image_url }}" class="card-img-top breed-picture">
             <div class="card-body">
               <h3 class="card-text">
                 {{ loop.index }}.
-                {{ breed }}
+                <a href={{"https://www.akc.org/dog-breeds/" + breed.split() | join('-')}}>{{ breed }}</a>
               </h3>
             </div>
         </div>
