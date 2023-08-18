@@ -1,20 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 id="quiz-result">{% block title %} The Best Dog Breed for You is {% endblock %}</h1>
-    <div id="social-share">
+    <div id="social-share" class="mt-5">
         {{ share.load() }}
         {{ share.create(title='Share with: ', sites='twitter, facebook, google', align='right') }}
     </div>
-    <div style="width: 50%; margin: auto" >
+
+    <h1 id="quiz-result">{% block title %} The Best Dog Breed for You is {% endblock %}</h1>
+
+    <div style="width: 60%; margin: auto" >
         {% for breed, image_url in breeds.items() %}
-        <ol class="list-group list-group-flush" style="background-color:rgb(248, 239, 227); margin-bottom: 1rem; list-style: none;">
-            <li class="list-group-item" style="font-size: 1rem">
+        <div class="card my-5 text-center result-card" >
+            <img src="{{ image_url }}" class="card-img-top breed_picture">
+            <div class="card-body">
+              <h3 class="card-text">
                 {{ loop.index }}.
                 {{ breed }}
-                <img id="breed_picture" src="{{ image_url }}">
-            </li>
-        </ol>
+              </h3>
+            </div>
+        </div>
         {% endfor %}
     </div>
 {% endblock %}
