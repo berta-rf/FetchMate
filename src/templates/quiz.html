@@ -5,8 +5,8 @@
     <main class="container quiz">
       <form action="/results" id="quiz_form">
         {% for idx, question in questions %}
-        <div id="question-{{ idx }}" class="card bg-light mb-3" style="width: 50rem; display: none;">
-            <div class="card-header">
+        <div id="question-{{ idx }}" class="question card bg-light mb-3" style="width: 50rem; display: none;">
+            <div class="card-header quiz-header">
               <h3>{{ question.question_text }}</h3>
             </div>
             <ul class="list-group list-group-flush answers">

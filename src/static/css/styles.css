@@ -171,6 +171,19 @@ p {
     padding-top: 50px;
 }
 
+.quiz-header {
+    background-color: var(--muted-b) !important;
+}
+
+#next-btn:hover {
+    background-color: #ffbf69 !important;
+}
+
+.answers li {
+    padding: 1.7rem;
+    font-size: 1rem;
+}
+
 
 /* QUIZ RESULT */
 #quiz-result {
@@ -179,11 +192,16 @@ p {
     padding-bottom: 20px;
 }
 
-#breed-picture {
+.breed-picture {
     height: 200px;
     width: 200px;
 }
 
 #social-share {
     padding-right: 50px;
+}
+
+.result-card {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border: 0 !important;
 }
