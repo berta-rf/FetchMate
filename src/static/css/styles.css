@@ -48,13 +48,18 @@ body {
     color: var(--bg-white) !important;
     text-decoration: none;
     background-color: inherit;
-    padding: 2% !important;
+    padding-left: 30px !important;
+    padding-right: 40px !important;
 }
 
 .nav-link:hover {
     color: var(--muted) !important;
 }
 
+#logo {
+    width: 20%;
+    height: auto;
+}
 
 /* HOME */
 
@@ -166,6 +171,19 @@ p {
     padding-top: 50px;
 }
 
+.quiz-header {
+    background-color: var(--muted-b) !important;
+}
+
+#next-btn:hover {
+    background-color: #ffbf69 !important;
+}
+
+.answers li {
+    padding: 1.7rem;
+    font-size: 1rem;
+}
+
 
 /* QUIZ RESULT */
 #quiz-result {
@@ -174,11 +192,37 @@ p {
     padding-bottom: 20px;
 }
 
-#breed-picture {
-    height: 200px;
-    width: 200px;
-}
-
 #social-share {
     padding-right: 50px;
+}
+
+a:link {
+    text-decoration: none;
+  }
+
+a:visited {
+    text-decoration: none;
+  }
+
+.result-card {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border: 0 !important;
+}
+
+/* LOADER */
+
+#loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--primary);
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    animation: spin 1s linear infinite;
+    display: none;
+    margin-top: 8rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
