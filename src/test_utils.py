@@ -19,6 +19,21 @@ class TestMatchedBreeds(TestCase):
         }
         self.assertEqual(result, expected)
 
+        quiz_input = {
+            "shedding": 1,
+            "barking": 1,
+            "energy": 1,
+            "protectiveness": 1,
+            "trainability": 1,
+        }
+
+        result = get_matched_breeds(quiz_input, n=2)
+        expected = {
+            "Afghan Hound": f"static/img/Afghan Hound.jpg",
+            "Bergamasco Sheepdog": f"static/img/Bergamasco Sheepdog.jpg"
+        }
+        self.assertEqual(result, expected)
+
     def test_no_matches(self):
 
         quiz_input = {
