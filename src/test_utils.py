@@ -1,17 +1,10 @@
 from unittest import TestCase, main
-from unittest.mock import patch
 from src.utils import get_matched_breeds
 
 
 class TestMatchedBreeds(TestCase):
 
-    @patch('requests.get')
-    def test_perfect_matches(self, mock_get):
-        mock_get.return_value.status_code = 200
-        mock_get.return_value.json.return_value = [
-            {"name": "Affenpinscher"},
-            {"name": "Appenzeller Sennenhund"}
-        ]
+    def test_perfect_matches(self):
         quiz_input = {
             "shedding": 3,
             "barking": 1,
@@ -26,16 +19,14 @@ class TestMatchedBreeds(TestCase):
         }
         self.assertEqual(result, expected)
 
-    @patch('requests.get')
-    def test_no_matches(self, mock_get):
-        mock_get.return_value.status_code = 200
-        mock_get.return_value.json.return_value = []
+    def test_no_matches(self):
+
         quiz_input = {
-            "shedding": 1,
-            "barking": 1,
-            "energy": 1,
-            "protectiveness": 1,
-            "trainability": 1,
+            "shedding": 0,
+            "barking": 0,
+            "energy": 0,
+            "protectiveness": 0,
+            "trainability": 0,
         }
         result = get_matched_breeds(quiz_input, n=2)
         expected = {
