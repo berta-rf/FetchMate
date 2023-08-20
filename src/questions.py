@@ -59,7 +59,7 @@ questions = [
             "a": "I'm looking for a friend who's friendly to all.",
             "b": "I prefer a more easygoing, less protective pal.",
             "c": "A friendly attitude with a bit of caution. Barking at strangers but making friends at the park.",
-            "d": "I'm looking for a good balance of protector and friendliness. Diplomat by day, security chief by night.",
+            "d": "I'm looking for a good balance of protector & friendliness. Diplomat by day, security chief by night.",
             "e": "I'd appreciate a watchful protector by my side. A loyal guardian who moonlights as a cuddle buddy.",
         },
         "param": "protectiveness",
@@ -75,12 +75,44 @@ questions = [
             "e": "Twice a day runs are my thing!",
         },
         "param": "energy",
+    }
+
+]
+
+
+additional_questions = [
+    # 7. drooling
+    {
+        "question": "How do you feel about a dog's drooling habits?",
+        "options": {
+            "a": "I'm okay with drool, but not a swimming pool's worth.",
+            "b": "Some drool is fine, but I don't want to be a raincoat-wearing dog owner.",
+            "c": "I'd prefer a breed that doesn't drool excessively.",
+            "d": "I'm looking for a dog that keeps the wet kisses to a minimum.",
+            "e": "I'd rather have a breed that doesn't drool at all, but I don't think that exists.",
+        },
+        "param": "drooling",
     },
+    # 8. Good with other dogs
+    {
+        "question": "Do you see your puppy pal enjoying the company of other furry friends?",
+        "options": {
+            "a": "Absolutely! I'd love a breed that's a social butterfly and enjoys playdates.",
+            "b": "My dog should get along with other dogs, but a few close pals are enough.",
+            "c": "I'd prefer a breed that's friendly but doesn't mind some me-time too.",
+            "d": "I'm looking for a breed that's content with human companionship and occasional dog interactions.",
+            "e": "I'm seeking a breed that prefers human attention over canine camaraderie.",
+        },
+        "param": "good_with_other_dogs",
+    }
 ]
 
 with app.app_context():
     # Insert each question
-    for question_obj in questions:
+    for question_obj in questions and additional_questions:
+        existing = Question.query.filter_by(param=question_obj["param"]).first()
+        if existing:
+            continue
         new_question = Question(
             question_text=question_obj["question"],
             param=question_obj["param"],
@@ -95,3 +127,5 @@ with app.app_context():
 
     # Commit queries
     db.session.commit()
+
+
