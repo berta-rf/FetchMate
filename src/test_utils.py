@@ -20,7 +20,12 @@ class TestMatchedBreeds(TestCase):
         }
         self.assertEqual(result, expected)
 
+    @patch("utils.download_dog_image")
+    def test_perfect_matches_edge_case1(self, mock_download_dog_image):
         quiz_input = dict(shedding=1, barking=1, energy=1, protectiveness=1, trainability=1)
+
+        mock_download_dog_image.return_value.status_code = 200
+        mock_download_dog_image.return_value = [dict(name="Afghan Hound"), dict(name="Bergamasco Sheepdog")]
 
         result = get_matched_breeds(quiz_input, n=2)
         expected = {
@@ -29,11 +34,18 @@ class TestMatchedBreeds(TestCase):
         }
         self.assertEqual(result, expected)
 
+    @patch("utils.download_dog_image")
+    def test_perfect_matches_edge_case2(self, mock_download_dog_image):
+
         quiz_input = dict(shedding=5, barking=5, energy=5, protectiveness=5, trainability=5)
+
+        mock_download_dog_image.return_value.status_code = 200
+        mock_download_dog_image.return_value = [dict(name="Barbado da Terceira"), dict(name="Doberman Pinscher")]
+
         result = get_matched_breeds(quiz_input, n=2)
         expected = {
             "Barbado da Terceira": "static/img/Barbado da Terceira.jpg",
-         "Doberman Pinscher": "static/img/Doberman Pinscher.jpg"
+            "Doberman Pinscher": "static/img/Doberman Pinscher.jpg"
         }
         self.assertEqual(result, expected)
 
