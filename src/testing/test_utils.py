@@ -61,7 +61,7 @@ class TestMatchedBreeds(TestCase):
 
 
 # need testing for download_dog_image??
-    # check if
+    # check if download dog image still creates a new dog file
     #
 
 # if __name__ == '__main__':
