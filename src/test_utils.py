@@ -15,8 +15,8 @@ class TestMatchedBreeds(TestCase):
 
         result = get_matched_breeds(quiz_input, n=2)
         expected = {
-            "Affenpinscher": f"static/img/Affenpinscher.jpg",
-            "Appenzeller Sennenhund": f"static/img/Appenzeller Sennenhund.jpg"
+            "Affenpinscher": "static/img/Affenpinscher.jpg",
+            "Appenzeller Sennenhund": "static/img/Appenzeller Sennenhund.jpg"
         }
         self.assertEqual(result, expected)
 
@@ -29,8 +29,8 @@ class TestMatchedBreeds(TestCase):
 
         result = get_matched_breeds(quiz_input, n=2)
         expected = {
-            "Afghan Hound": f"static/img/Afghan Hound.jpg",
-            "Bergamasco Sheepdog": f"static/img/Bergamasco Sheepdog.jpg"
+            "Afghan Hound": "static/img/Afghan Hound.jpg",
+            "Bergamasco Sheepdog": "static/img/Bergamasco Sheepdog.jpg"
         }
         self.assertEqual(result, expected)
 
@@ -60,7 +60,7 @@ class TestMatchedBreeds(TestCase):
         self.assertEqual(result, expected)
 
 
-# need testing for download_dog_image
+# need testing for download_dog_image??
 
 # if __name__ == '__main__':
 #     main()
