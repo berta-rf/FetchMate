@@ -61,6 +61,8 @@ class TestMatchedBreeds(TestCase):
 
 
 # need testing for download_dog_image??
+    # check if
+    #
 
 # if __name__ == '__main__':
 #     main()
