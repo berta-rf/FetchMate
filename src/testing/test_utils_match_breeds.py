@@ -1,6 +1,6 @@
 from unittest import TestCase, main
 from unittest.mock import patch
-from src.utils import get_matched_breeds, download_dog_image, requests
+from src.utils import get_matched_breeds
 
 
 class TestMatchedBreeds(TestCase):
