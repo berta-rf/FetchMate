@@ -5,11 +5,11 @@ from src.utils import get_matched_breeds, download_dog_image, requests
 
 class TestMatchedBreeds(TestCase):
 
-    @patch("utils.download_dog_image")
+    @patch("utils.download_dog_image")  # creates a mock of download_dog_image
     def test_perfect_matches(self, mock_download_dog_image):
         quiz_input = dict(shedding=3, barking=1, energy=3, protectiveness=3, trainability=5)
 
-        mock_download_dog_image.return_value.status_code = 200
+        mock_download_dog_image.return_value.status_code = 200  # returns a successful HTTP response
         mock_download_dog_image.return_value = [dict(name="Affenpinscher"), dict(name="Appenzeller Sennenhund")]
 
         result = get_matched_breeds(quiz_input, n=2)
