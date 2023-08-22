@@ -1,7 +1,6 @@
 from unittest import TestCase, main
 from unittest.mock import patch
-from src import utils
-from utils import get_matched_breeds, download_dog_image, requests
+from src.utils import get_matched_breeds, download_dog_image, requests
 
 
 class TestMatchedBreeds(TestCase):
@@ -60,12 +59,8 @@ class TestMatchedBreeds(TestCase):
         self.assertEqual(result, expected)
 
 
-# need testing for download_dog_image??
-    # check if download dog image still creates a new dog file
-    #
-
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()
 
 
 
