@@ -15,7 +15,12 @@
             <div class="card-body">
               <h3 class="card-text">
                 {{ loop.index }}.
-                <a href={{"https://www.akc.org/dog-breeds/" + breed.split() | join('-')}}>{{ breed }}</a>
+                {% if breed != "You're a Cat Person🐱" %}
+                    <a href={{"https://www.akc.org/dog-breeds/" + breed.split() | join('-')}}>{{ breed }}</a>
+                {% else %}
+                    {{ breed }}
+                {% endif %}
+                  <img src="{{ image_url }}" class="card-img-top breed-picture">
               </h3>
             </div>
         </div>
