@@ -54,10 +54,6 @@ class Question(db.Model):
 
 ######################################################################
 
-# Dog background images to randomize for homepage
-images = os.listdir("static/img")
-image = random.choice(images)
-
 
 # Home
 @app.route("/")
@@ -93,4 +89,8 @@ def test_app():
 
 
 if __name__ == "__main__":
+    # Dog background images to randomize for homepage
+    images = os.listdir("static/img")
+    image = random.choice(images)
+
     app.run(debug=True, host="0.0.0.0", port=5001)
