@@ -3,7 +3,7 @@ pillow~=10.0.0
 SQLAlchemy
 flask-share
 pytest-playwright
-playwright install
+playwright
 pytest-flask
 
 playwright~=1.37.0
