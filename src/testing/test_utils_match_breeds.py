@@ -7,7 +7,7 @@ class TestMatchedBreeds(TestCase):
     @patch("utils.download_dog_image")  # creates a mock of download_dog_image
     def test_perfect_matches(self, mock_download_dog_image):
         quiz_input = dict(
-            shedding=3, barking=1, energy=3, protectiveness=3, trainability=5
+            shedding=3, barking=1, energy=3, protectiveness=3, trainability=5, drooling=3, good_with_other_dogs=3
         )
 
         mock_download_dog_image.return_value.status_code = (
@@ -29,7 +29,7 @@ class TestMatchedBreeds(TestCase):
     @patch("utils.download_dog_image")
     def test_perfect_matches_edge_case1(self, mock_download_dog_image):
         quiz_input = dict(
-            shedding=1, barking=1, energy=1, protectiveness=1, trainability=1
+            shedding=1, barking=1, energy=1, protectiveness=1, trainability=1, drooling=1, good_with_other_dogs=1
         )
 
         mock_download_dog_image.return_value.status_code = 200
@@ -49,7 +49,7 @@ class TestMatchedBreeds(TestCase):
     def test_perfect_matches_edge_case2(self, mock_download_dog_image):
 
         quiz_input = dict(
-            shedding=5, barking=5, energy=5, protectiveness=5, trainability=5
+            shedding=5, barking=5, energy=5, protectiveness=5, trainability=5, drooling=5, good_with_other_dogs=5
         )
 
         mock_download_dog_image.return_value.status_code = 200
@@ -68,7 +68,7 @@ class TestMatchedBreeds(TestCase):
     def test_no_matches(self):
 
         quiz_input = dict(
-            shedding=0, barking=0, energy=0, protectiveness=0, trainability=0
+            shedding=0, barking=0, energy=0, protectiveness=0, trainability=0, drooling=0, good_with_other_dogs=0
         )
 
         result = get_matched_breeds(quiz_input, n=2)
