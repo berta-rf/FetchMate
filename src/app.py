@@ -1,9 +1,11 @@
-from flask import Flask, render_template, jsonify, request, url_for, redirect
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_share import Share
-from utils import get_matched_breeds
 import os
 import random
+import pytest
+
+from utils import get_matched_breeds
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -22,6 +24,7 @@ db = SQLAlchemy(app)
 # Create social share component
 share = Share()
 share.init_app(app)
+
 
 # Question class (questions table)
 class Question(db.Model):
@@ -81,6 +84,12 @@ def results():
     quiz_results = request.args
     matched_breeds = get_matched_breeds(dict(quiz_results))
     return render_template("results.html", breeds=matched_breeds)
+
+
+# BROWSER TESTING
+@pytest.fixture()
+def test_app():
+    yield app
 
 
 if __name__ == "__main__":

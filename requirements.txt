@@ -1,4 +1,11 @@
-flask
-pillow
+flask~=2.3.2
+pillow~=10.0.0
 SQLAlchemy
 flask-share
+pytest-playwright
+playwright install
+pytest-flask
+
+playwright~=1.37.0
+requests~=2.31.0
+pytest~=7.4.0
