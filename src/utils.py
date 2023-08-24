@@ -79,7 +79,9 @@ def download_dog_image(breed: str):
     """
     Takes a name of breed and saves its image to static/img
     """
-    image_path = f"static/img/{breed}.jpg"
+    # Get the project directory to construct the image path
+    project_directory = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    image_path = os.path.join(project_directory, "src", "static", "img", f"{breed}.jpg")
 
     # Checks if the image has been downloaded before
     if not os.path.isfile(image_path):
