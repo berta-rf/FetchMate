@@ -1,6 +1,5 @@
 import requests
 import shutil
-import json
 import io
 import os
 from collections import Counter
