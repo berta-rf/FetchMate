@@ -1,6 +1,6 @@
 # FetchMate
 
-
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 ![Python](https://img.shields.io/badge/-Python-blue?logo=python&logoColor=white&style=plastic)
 ![JS](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=white&style=plastic)
 ![SQLite](https://img.shields.io/badge/SQLite-044a64?logo=sqlite&logoColor=white&style=plastic)
