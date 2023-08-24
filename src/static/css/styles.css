@@ -90,6 +90,7 @@ body {
     height: auto;
     min-height: 100%;
     object-fit: fill;
+    background-color: rgba(0,0,0,.7); opacity: 0.9;
 }
 
 .hero_text {
@@ -97,6 +98,7 @@ body {
     z-index: 1;
     max-width: 90%;
     background-color: transparent !important;
+
 }
 
 
@@ -168,20 +170,26 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 50px;
+    padding-top: 100px;
+    outline: none;
+    border: none;
 }
 
 .quiz-header {
     background-color: var(--muted-b) !important;
+
 }
 
 #next-btn:hover {
-    background-color: #ffbf69 !important;
+   background-color: #ffbf69 !important;
 }
 
 .answers li {
-    padding: 1.7rem;
+    padding: 0.6rem;
     font-size: 1rem;
+    border: none;
+    outline: none;
+
 }
 
 
@@ -225,4 +233,28 @@ a:visited {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+
+/* Style for the answer buttons */
+.answer-label {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    font-size: 20px;
+    padding: 2px;
+    background-color: #2ec4b6;
+    outline: none;
+    border: none;
+    color: black;
+    margin-bottom: 2px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+input[type="radio"]:checked + .answer-label {
+    font-weight: bold;
+    color: #ff9f1c;
+    outline: none;
+    border: none;
 }

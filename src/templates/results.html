@@ -6,12 +6,11 @@
         {{ share.create(title='Share with: ', sites='twitter, facebook', align='right') }}
     </div>
 
-    <h1 id="quiz-result">{% block title %} The Best Dog Breed for You is {% endblock %}</h1>
+    <h1 id="quiz-result">{% block title %} The Pawfect Dog Breed for You is {% endblock %}</h1>
 
     <div style="width: 60%; margin: auto" >
         {% for breed, image_url in breeds.items() %}
         <div class="card my-5 text-center result-card" >
-            <img src="{{ image_url }}" class="card-img-top breed-picture">
             <div class="card-body">
               <h3 class="card-text">
                 {{ loop.index }}.
@@ -20,8 +19,8 @@
                 {% else %}
                     {{ breed }}
                 {% endif %}
-                  <img src="{{ image_url }}" class="card-img-top breed-picture">
               </h3>
+                <img src="{{ image_url }}" class="card-img-top breed-picture">
             </div>
         </div>
         {% endfor %}

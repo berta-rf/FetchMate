@@ -5,38 +5,39 @@
     <main class="container quiz">
       <form action="/results" id="quiz_form">
         {% for idx, question in questions %}
-        <div id="question-{{ idx }}" class="question card bg-light mb-3" style="width: 50rem; display: none;">
+         <div id="question-{{ idx }}" class="question card bg-light mb-3" style="width: 65rem; display: none; outline: none;border: none;">
             <div class="card-header quiz-header">
-              <h3>{{ question.question_text }}</h3>
+                <h3>{{ question.question_text }}</h3>
             </div>
-            <ul class="list-group list-group-flush answers">
-              <li class="list-group-item">
-                <input id="answer_{{ idx }}_1" type="radio" required name="{{ question.param }}" value="{{ question.value_1 }}">
-                <label for="answer_{{ idx }}_1">{{ question.answer_1 }}</label>
-              </li>
-              <li class="list-group-item">
-                <input id="answer_{{ idx }}_2" type="radio" required name="{{ question.param }}" value="{{ question.value_2 }}">
-                <label for="answer_{{ idx }}_2">{{ question.answer_2 }}</label>
-              </li>
-              <li class="list-group-item">
-                <input id="answer_{{ idx }}_3" type="radio" required name="{{ question.param }}" value="{{ question.value_3 }}">
-                <label for="answer_{{ idx }}_3">{{ question.answer_3 }}</label>
-              </li>
-              <li class="list-group-item">
-                <input id="answer_{{ idx }}_4" type="radio" required name="{{ question.param }}" value="{{ question.value_4 }}">
-                <label for="answer_{{ idx }}_4">{{ question.answer_4 }}</label>
-              </li>
-              <li class="list-group-item">
-                <input id="answer_{{ idx }}_5" type="radio" required name="{{ question.param }}" value="{{ question.value_5 }}">
-                <label for="answer_{{ idx }}_5">{{ question.answer_5 }}</label>
-              <li class="list-group-item">
-                <input id="answer_{{ idx }}_6" type="radio" required name="{{ question.param }}" value="{{ question.value_6 }}">
-                <label for="answer_{{ idx }}_6">{{ question.answer_6 }}</label>
-              </li>
-            </ul>
+             <ul class="list-group list-group-flush answers">
+                  <li class="list-group-item">
+                    <input id="answer_{{ idx }}_1" type="radio" required name="{{ question.param }}" value="{{ question.value_1 }}" hidden>
+                      <label for="answer_{{ idx }}_1" class="answer-label">{{ question.answer_1 }}</label>
+                  </li>
+                  <li class="list-group-item">
+                    <input id="answer_{{ idx }}_2" type="radio" required name="{{ question.param }}" value="{{ question.value_2 }}"hidden>
+                      <label for="answer_{{ idx }}_2" class="answer-label">{{ question.answer_2 }}</label>
+                  </li>
+                  <li class="list-group-item">
+                    <input id="answer_{{ idx }}_3" type="radio" required name="{{ question.param }}" value="{{ question.value_3 }}"hidden>
+                      <label for="answer_{{ idx }}_3" class="answer-label">{{ question.answer_3 }}</label>
+                  </li>
+                  <li class="list-group-item">
+                    <input id="answer_{{ idx }}_4" type="radio" required name="{{ question.param }}" value="{{ question.value_4 }}"hidden>
+                      <label for="answer_{{ idx }}_4" class="answer-label">{{ question.answer_4 }}</label>
+                  </li>
+                  <li class="list-group-item">
+                    <input id="answer_{{ idx }}_5" type="radio" required name="{{ question.param }}" value="{{ question.value_5 }}"hidden>
+                      <label for="answer_{{ idx }}_5" class="answer-label">{{ question.answer_5 }}</label>
+                  </li>
+                  <li class="list-group-item">
+                    <input id="answer_{{ idx }}_6" type="radio" required name="{{ question.param }}" value="{{ question.value_6 }}"hidden>
+                      <label for="answer_{{ idx }}_6" class="answer-label">{{ question.answer_6 }}</label>
+                    </li>
+             </ul>
           </div>
         {% endfor %}
-        <button class="btn btn-light btn-lg" id="next-btn">Next</button>
+        <button class="btn btn-light btn-lg" style="font-weight: bold" id="next-btn">Next</button>
       </form>
 
       <div id="loader"></div>
@@ -90,7 +91,7 @@ function displayQuestion(index) {
 
   const nextQuestionEl = document.getElementById('question-' + (index + 1));
   if (!nextQuestionEl) {
-    document.getElementById('next-btn').innerText = 'Submit'
+    document.getElementById('next-btn').innerText = 'Fetch your result 🦴'
   }
 
   // Show question
