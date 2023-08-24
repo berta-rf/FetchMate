@@ -41,12 +41,16 @@ class Question(db.Model):
     answer_3 = db.Column(db.String(), nullable=False)
     answer_4 = db.Column(db.String(), nullable=False)
     answer_5 = db.Column(db.String(), nullable=False)
+    answer_6 = db.Column(db.String(), nullable=False)
 
     value_1 = db.Column(db.Integer, default=1)
     value_2 = db.Column(db.Integer, default=2)
     value_3 = db.Column(db.Integer, default=3)
     value_4 = db.Column(db.Integer, default=4)
     value_5 = db.Column(db.Integer, default=5)
+    value_6 = db.Column(db.Integer, default=0)
+
+
 
     def __repr__(self):
         return f"<Question {self.question_text}>"
