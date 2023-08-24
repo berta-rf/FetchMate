@@ -20,4 +20,4 @@ From the `src` folder, run `python -m unittest testing/test_utils_match_breeds.p
 
 ### End-to-End testing
 
-From the `src` folder, run `pytest testing/test_web.py` to run browser tests.
+From the `src` folder, run `python -m pytest testing/test_web.py` to run browser tests.
