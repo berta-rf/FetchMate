@@ -16,8 +16,8 @@ The app will be served at http://localhost:5001.
 
 ### Unit testing
 
-Run `python -m unittest test_utils.py` to run tests for utils.py.
+From the `src` folder, run `python -m unittest testing/test_utils_match_breed.py` to run tests for utils.py.
 
 ### End-to-End testing
 
-Run `pytest test_web.py` to run browser tests.
+From the `src` folder, run `pytest testing/test_web.py` to run browser tests.
