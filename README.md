@@ -32,4 +32,6 @@ From the `src` folder, run `python -m unittest testing/test_utils_match_breeds.p
 
 ### End-to-End testing
 
-From the `src` folder, run `python -m pytest testing/test_web.py` to run browser tests.
+In the terminal, run the command `playwright install`. 
+
+Then from the `src` folder, run `python -m pytest testing/test_web.py` to run browser tests (Flask app must be running).
