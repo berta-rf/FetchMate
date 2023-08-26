@@ -89,7 +89,18 @@ db.create_all()
 exit()
 ```
 
-##  5. Run the App
+## 5. Obtain an API Key:
+To use the features of this project, you need to obtain an API key from https://api-ninjas.com/api/dogs. Here's how:
+
+- Sign up or log in to https://api-ninjas.com/api/dogs.
+- Navigate to the API key generation section in your account dashboard.
+- Generate a new API key and copy it.
+- Open the config.py file in the src folder of your project. Add the API key you obtained in the previous step:
+```python
+API_KEY = "your_generated_api_key_here"
+```
+
+##  6. Run the App
 Run the Flask app using the following command:
 
 ```bash
