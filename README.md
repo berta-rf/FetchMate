@@ -11,7 +11,7 @@
 
 Here is a markdown index of contents for the given README file:
 
-# Table of Contents
+## Table of Contents
 
 - [About](#about)
   - [Meet the Developers](#meet-the-developers)
@@ -30,14 +30,14 @@ Here is a markdown index of contents for the given README file:
 
 The index links to each major section of the README using markdown headings. This allows readers to easily navigate to the relevant parts of the document.
 
-# About
+## About
 
 Welcome to FetchMate, your go-to platform for finding your perfect canine companion! Our mission at FetchMate is to help connect people with their ideal dog breeds, making the journey of welcoming a new furry friend into your home an exciting and tailored experience.
 
-## Meet the Developers
+### Meet the Developers
 FetchMate is the brainchild of a passionate team of developers who share a love for dogs and a commitment to helping potential dog owners find the best match for their lifestyle. With a blend of expertise in web development and a shared enthusiasm for canine companionship, we've come together to create a tool that simplifies the process of selecting the right dog breed.
 
-### Contributors
+#### Contributors
 - [@Alison](https://github.com/AlisonEve)
 - [@Bella](https://github.com/bellamcdermid)
 - [@Berta](https://github.com/berta-rf)
@@ -45,10 +45,10 @@ FetchMate is the brainchild of a passionate team of developers who share a love 
 - [@Xixian](https://github.com/XixianWei)
 - [@Yingying](https://github.com/Heying778)
 
-## Why FetchMate?
+### Why FetchMate?
 At FetchMate, we understand that choosing the perfect dog is about more than just appearance – it's about finding a companion that will thrive in your home based on your unique lifestyle and preferences. Our inspiration for creating FetchMate comes from the desire to offer a solution that goes beyond aesthetics. We believe that every dog owner deserves a four-legged friend that aligns with their needs, whether it's energy levels, size, grooming requirements, or temperament.
 
-## What is FetchMate All About?
+### What is FetchMate All About?
 FetchMate offers an enjoyable and convenient online quiz that guides you in discovering the ideal dog breeds that match your individual lifestyle. Our user-friendly 5-minute quiz takes into consideration various aspects of your routine and preferences. Based on your responses, we analyze and recommend dog breeds that align with your requirements. From temperaments to energy levels, size, grooming needs, and more, we've got you covered.
 
 The beauty of FetchMate is its flexibility – you can even retake the quiz if you wish to modify your responses and explore different breed options. Our goal is to provide the most comprehensive and intuitive dog breed finder tool on the web, ensuring that your journey to finding your new best friend is as seamless as possible.
@@ -59,25 +59,25 @@ Woof-tastic regards,
 
 The FetchMate Team 💚
 
-# Installation
+## Installation
 
 Follow these steps to set up and run the FetchMate Flask app:
 
-## 1. Clone the Repository
+### 1. Clone the Repository
 Clone the FetchMate repository to your local machine:
 
 ```bash
 git clone git@github.com:XixianWei/FetchMate.git
 cd FetchMate
 ```
-## 2. Create and Activate a Virtual Environment (Optional): 
+### 2. Create and Activate a Virtual Environment (Optional): 
 You can create and activate a virtual environment if you want an isolated environment for your project. If you skip this step, the packages will be installed globally.
 ```bash
 cd /path/to/your/FetchMate/src
 python3 -m venv venv
 ```
 
-### Activate the virtual environment:
+#### Activate the virtual environment:
 On macOS or Linux:
 ```bash
 source venv/bin/activate
@@ -93,12 +93,12 @@ On Windows (PowerShell):
 .\venv\Scripts\Activate.ps1
 ```
 
-## 3. Install Dependencies using requirements.txt:
+### 3. Install Dependencies using requirements.txt:
 ```bash
 pip install -r requirements.txt
 ```
 
-## 4. Initialize the Database
+### 4. Initialize the Database
 Run the Python interpreter and create the necessary database tables:
 ```bash
 python3
@@ -110,7 +110,7 @@ db.create_all()
 exit()
 ```
 
-## 5. Obtain an API Key:
+### 5. Obtain an API Key:
 To use the features of this project, you need to obtain an API key from https://api-ninjas.com/api/dogs. Here's how:
 
 - Sign up or log in to https://api-ninjas.com/api/dogs.
@@ -121,7 +121,7 @@ To use the features of this project, you need to obtain an API key from https://
 API_KEY = "your_generated_api_key_here"
 ```
 
-##  6. Run the App
+###  6. Run the App
 Run the Flask app using the following command:
 
 ```bash
@@ -135,34 +135,34 @@ python app.py
 The app will be served at http://localhost:5001.
 
 
-# Test
+## Test
 We take testing seriously at FetchMate to ensure the reliability and functionality of our application. We have a comprehensive suite of tests that cover different aspects of the system, including unit tests for core functionality and end-to-end tests to validate the user experience.
 
-## Unit testing
+### Unit testing
 To run unit tests for the utility functions in utils.py, follow these steps:
 
-### 1. Navigate to the Test Directory: 
+#### 1. Navigate to the Test Directory: 
 Open a terminal and navigate to the root of the project, specifically the src folder where the tests are located.
 ```bash
 cd path/to/src
 ```
 
-### 2. Run Unit Tests: 
+#### 2. Run Unit Tests: 
 Execute the following command to run the unit tests for the utility functions.
 ```bash
 python -m unittest testing/test_utils_match_breeds.py
 ```
 
-## End-to-End testing
+### End-to-End testing
 We also perform end-to-end tests to validate the behavior of our Flask application in a real-world browser scenario. Here's how to run these tests:
 
-### 1. Install Playwright: 
+#### 1. Install Playwright: 
 In the terminal, run the following command to install Playwright.
 ```bash
 playwright install
 ```
 
-### 2. Run End-to-End Tests: 
+#### 2. Run End-to-End Tests: 
 From the src folder, execute the following command to run the browser tests.
 ```bash
 python -m pytest testing/test_web.py
