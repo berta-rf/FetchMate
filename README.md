@@ -9,6 +9,26 @@
 ![Unittest](https://img.shields.io/badge/Unittest-FF9900?logo=unittest&logoColor=white&style=plastic)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-712cf9?logo=bootstrap&logoColor=white&style=plastic)
 
+Here is a markdown index of contents for the given README file:
+
+# Table of Contents
+
+- [About](#about)
+  - [Meet the Developers](#meet-the-developers)
+  - [Why FetchMate?](#why-fetchmate) 
+  - [What is FetchMate All About?](#what-is-fetchmate-all-about)
+- [Installation](#installation)
+  - [1. Clone the Repository](#1-clone-the-repository)
+  - [2. Create and Activate a Virtual Environment (Optional)](#2-create-and-activate-a-virtual-environment-optional)
+  - [3. Install Dependencies using requirements.txt](#3-install-dependencies-using-requirementstxt)
+  - [4. Initialize the Database](#4-initialize-the-database)
+  - [5. Obtain an API Key](#5-obtain-an-api-key)
+  - [6. Run the App](#6-run-the-app)
+- [Test](#test)
+  - [Unit testing](#unit-testing)
+  - [End-to-End testing](#end-to-end-testing)
+
+The index links to each major section of the README using markdown headings. This allows readers to easily navigate to the relevant parts of the document.
 
 # About
 
