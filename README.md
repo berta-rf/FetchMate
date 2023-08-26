@@ -9,8 +9,6 @@
 ![Unittest](https://img.shields.io/badge/Unittest-FF9900?logo=unittest&logoColor=white&style=plastic)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-712cf9?logo=bootstrap&logoColor=white&style=plastic)
 
-Here is a markdown index of contents for the given README file:
-
 ## Table of Contents
 
 - [About](#about)
@@ -28,7 +26,6 @@ Here is a markdown index of contents for the given README file:
   - [Unit testing](#unit-testing)
   - [End-to-End testing](#end-to-end-testing)
 
-The index links to each major section of the README using markdown headings. This allows readers to easily navigate to the relevant parts of the document.
 
 ## About
 
