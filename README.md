@@ -10,28 +10,125 @@
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-712cf9?logo=bootstrap&logoColor=white&style=plastic)
 
 
-## About
+# About
 
+Welcome to FetchMate, your go-to platform for finding your perfect canine companion! Our mission at FetchMate is to help connect people with their ideal dog breeds, making the journey of welcoming a new furry friend into your home an exciting and tailored experience.
 
-## Installation
+## Meet the Developers
+FetchMate is the brainchild of a passionate team of developers who share a love for dogs and a commitment to helping potential dog owners find the best match for their lifestyle. With a blend of expertise in web development and a shared enthusiasm for canine companionship, we've come together to create a tool that simplifies the process of selecting the right dog breed.
 
-Run `pip install -r requirements.txt` to install all required packages.
+## Why FetchMate?
+At FetchMate, we understand that choosing the perfect dog is about more than just appearance – it's about finding a companion that will thrive in your home based on your unique lifestyle and preferences. Our inspiration for creating FetchMate comes from the desire to offer a solution that goes beyond aesthetics. We believe that every dog owner deserves a four-legged friend that aligns with their needs, whether it's energy levels, size, grooming requirements, or temperament.
 
-## Running the App
+## What is FetchMate All About?
+FetchMate offers an enjoyable and convenient online quiz that guides you in discovering the ideal dog breeds that match your individual lifestyle. Our user-friendly 5-minute quiz takes into consideration various aspects of your routine and preferences. Based on your responses, we analyze and recommend dog breeds that align with your requirements. From temperaments to energy levels, size, grooming needs, and more, we've got you covered.
 
-Run `python app.py` in the terminal.
+The beauty of FetchMate is its flexibility – you can even retake the quiz if you wish to modify your responses and explore different breed options. Our goal is to provide the most comprehensive and intuitive dog breed finder tool on the web, ensuring that your journey to finding your new best friend is as seamless as possible.
+
+We invite you to enjoy the FetchMate experience and embark on the journey of discovering the perfect furry companion that's tailored just for you. Your feedback is important to us, so feel free to reach out with any suggestions or ideas to enhance the FetchMate experience.
+
+Woof-tastic regards,
+
+The FetchMate Team 💚
+
+# Installation
+
+Follow these steps to set up and run the FetchMate Flask app:
+
+## 1. Clone the Repository
+Clone the FetchMate repository to your local machine:
+
+```bash
+git clone git@github.com:XixianWei/FetchMate.git
+cd FetchMate
+```
+## 2. Create and Activate a Virtual Environment (Optional): 
+You can create and activate a virtual environment if you want an isolated environment for your project. If you skip this step, the packages will be installed globally.
+```bash
+cd /path/to/your/FetchMate/src
+python3 -m venv venv
+```
+
+### Activate the virtual environment:
+On macOS or Linux:
+```bash
+source venv/bin/activate
+```
+
+On Windows (Command Prompt):
+```bash
+venv\Scripts\activate
+```
+
+On Windows (PowerShell):
+```bash
+.\venv\Scripts\Activate.ps1
+```
+
+## 3. Install Dependencies using requirements.txt:
+```bash
+pip install -r requirements.txt
+```
+
+## 4. Initialize the Database
+Run the Python interpreter and create the necessary database tables:
+```bash
+python3
+```
+then
+```bash
+from app import db
+db.create_all()
+exit()
+```
+
+##  5. Run the App
+Run the Flask app using the following command:
+
+```bash
+python3 app.py
+```
+or
+```bash
+python app.py
+```
 
 The app will be served at http://localhost:5001.
 
 
-## Testing
+# Test
+We take testing seriously at FetchMate to ensure the reliability and functionality of our application. We have a comprehensive suite of tests that cover different aspects of the system, including unit tests for core functionality and end-to-end tests to validate the user experience.
 
-### Unit testing
+## Unit testing
+To run unit tests for the utility functions in utils.py, follow these steps:
 
-From the `src` folder, run `python -m unittest testing/test_utils_match_breeds.py` to run tests for utils.py.
+### 1. Navigate to the Test Directory: 
+Open a terminal and navigate to the root of the project, specifically the src folder where the tests are located.
+```bash
+cd path/to/src
+```
 
-### End-to-End testing
+### 2. Run Unit Tests: 
+Execute the following command to run the unit tests for the utility functions.
+```bash
+python -m unittest testing/test_utils_match_breeds.py
+```
 
-In the terminal, run the command `playwright install`. 
+## End-to-End testing
+We also perform end-to-end tests to validate the behavior of our Flask application in a real-world browser scenario. Here's how to run these tests:
 
-Then from the `src` folder, run `python -m pytest testing/test_web.py` to run browser tests (Flask app must be running).
+### 1. Install Playwright: 
+In the terminal, run the following command to install Playwright.
+```bash
+playwright install
+```
+
+### 2. Run End-to-End Tests: 
+From the src folder, execute the following command to run the browser tests.
+```bash
+python -m pytest testing/test_web.py
+```
+
+Please note that the Flask app must be running for the end-to-end tests to work as expected.
+
+
