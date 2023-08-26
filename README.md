@@ -17,6 +17,13 @@ Welcome to FetchMate, your go-to platform for finding your perfect canine compan
 ## Meet the Developers
 FetchMate is the brainchild of a passionate team of developers who share a love for dogs and a commitment to helping potential dog owners find the best match for their lifestyle. With a blend of expertise in web development and a shared enthusiasm for canine companionship, we've come together to create a tool that simplifies the process of selecting the right dog breed.
 
+### Contributors
+- [@Bella](https://github.com/bellamcdermid)
+- [@Berta](https://github.com/berta-rf)
+- [@Juling](https://github.com/julingc)
+- [@Xixian](https://github.com/XixianWei)
+- [@Yingying](https://github.com/Heying778)
+
 ## Why FetchMate?
 At FetchMate, we understand that choosing the perfect dog is about more than just appearance – it's about finding a companion that will thrive in your home based on your unique lifestyle and preferences. Our inspiration for creating FetchMate comes from the desire to offer a solution that goes beyond aesthetics. We believe that every dog owner deserves a four-legged friend that aligns with their needs, whether it's energy levels, size, grooming requirements, or temperament.
 
